@@ -1,0 +1,13 @@
+<% include partials/header %>
+
+    <h1>Nearby Bus Arrivals</h1>
+    <div>
+        <% stopsNearby.forEach(function(stop){ %>
+            <span style="border: 2px solid black;">
+                Name: <%= stop.Stop_Name %> 
+                Naptan: <%= stop.Naptan_Atco %>
+            </span></p>
+        <% }) %>
+    </div>
+
+<% include partials/footer %>
