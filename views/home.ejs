@@ -1,8 +1,19 @@
 <% include partials/header %>
-
-    <h1>Hello from home</h1>
-    <a href="/bus">BUS</a>
-    <a>TUBE</a>
-    <a>TRAINS</a>
+    <div class="landing">
+        <div class="ui center aligned doubling stackable grid container">
+            <h1 class="rounded">Get me a bus!</h1>
+            <div class="three column row choice">
+                <div class="column pick">
+                    <p><a href="/bus"><i class="bus icon"></i></a></p>
+                </div>
+                <div class="column pick">
+                    <p><a><i class="subway icon"></i></a></p>
+                </div>
+                <div class="column pick">
+                    <p><a><i class="train icon"></i></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <% include partials/footer %>

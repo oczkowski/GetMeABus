@@ -1,0 +1,52 @@
+body {
+  background-color: purple;
+  color: white; }
+
+.container {
+  padding-top: 2em; }
+
+.landing {
+  height: 100%;
+  width: 100%;
+  padding-top: 20em;
+  color: white; }
+  @media only screen and (max-width: 768px) {
+    .landing {
+      padding-top: 4em; } }
+
+.landing a {
+  color: #ffccff; }
+
+.choice {
+  font-size: 10em; }
+  @media only screen and (max-width: 768px) {
+    .choice {
+      font-size: 7em; } }
+
+.pick:hover {
+  background: #660066; }
+
+.landing h1:first-of-type {
+  background: #660066; }
+
+.locationInput {
+  padding: 0.5em;
+  color: white !important;
+  font-size: 3em !important;
+  border-bottom: 1px solid white; }
+  @media only screen and (max-width: 768px) {
+    .locationInput {
+      font-size: 1.5em !important; } }
+
+.locationInput input {
+  color: white !important; }
+
+#getLocation {
+  font-size: 3em; }
+  @media only screen and (max-width: 768px) {
+    #getLocation {
+      font-size: 1.5em !important; } }
+
+#getLocation:hover {
+  color: white !important;
+  cursor: pointer; }

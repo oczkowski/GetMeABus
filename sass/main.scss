@@ -1,0 +1,56 @@
+body{
+    background-color: purple;
+    color: white;
+}
+.container{
+    padding-top: 2em;
+}
+//Landing page
+.landing{
+    height: 100%;
+    width: 100%;
+    padding-top: 20em;
+    color: white;
+    @media only screen and (max-width: 768px) {
+        padding-top: 4em;
+    }
+}
+.landing a{
+    color: #ffccff;
+}
+
+.choice{
+    font-size: 10em;
+    @media only screen and (max-width: 768px) {
+        font-size: 7em;
+    }
+}
+.pick:hover{
+    background: #660066;
+}
+.landing h1:first-of-type{
+    background: #660066;
+}
+//Bus page
+.locationInput{
+    padding: 0.5em;
+    color: white !important;
+    font-size: 3em !important;
+    border-bottom: 1px solid white;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.5em !important;
+    }
+}
+.locationInput input{
+    color: white !important;
+}
+#getLocation{
+    font-size: 3em;
+    @media only screen and (max-width: 768px) {
+        font-size: 1.5em !important;
+    }
+}
+#getLocation:hover{
+    color: white !important;
+    cursor: pointer;
+}
