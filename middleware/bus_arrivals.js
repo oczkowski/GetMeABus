@@ -10,10 +10,19 @@
     busArrivalsMw.getMeStopTimetable = function(NaptanId){
         var url = 'https://api.tfl.gov.uk/StopPoint/' + NaptanId + '/Arrivals' + tflApiString;
         return axios.get(url).then(function(response){
-            return response;
+            var busData = response.data.sort(compare); //Save only bus 'data' and sort by timeToStation
+            return busData;
         }).catch(function(error){
             console.log("Error: " + error);
         });
     }
+    //Functions
+    function compare(a, b) {
+        if (a.timeToStation < b.timeToStation)
+            return -1;
+        if (a.timeToStation > b.timeToStation)
+            return 1;
+        return 0;
+    }      
 
 module.exports = busArrivalsMw;

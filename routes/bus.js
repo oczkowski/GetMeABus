@@ -16,7 +16,7 @@
     });
     router.post("/bus/arrivals", function(req, res){
         busArrivalMw.getMeStopTimetable(req.body.NaptanId).then(function(arrivals){
-            res.json(arrivals.data);
+            res.json(arrivals);
         });
     });
 //Return router
