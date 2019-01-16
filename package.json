@@ -22,6 +22,6 @@
     "sort-by-distance": "^1.0.1"
   },
   "devDependencies": {
-    "gulp": "^4.0.0"
+    "gulp": "^3.9.1"
   }
 }
