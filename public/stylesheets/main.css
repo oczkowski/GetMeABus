@@ -42,11 +42,14 @@ body {
   color: white !important; }
 
 #getLocation {
-  font-size: 3em; }
+  font-size: 3em;
+  cursor: pointer; }
   @media only screen and (max-width: 768px) {
     #getLocation {
       font-size: 1.5em !important; } }
 
-#getLocation:hover {
-  color: white !important;
+.stopEntity {
   cursor: pointer; }
+
+.stopEntity:hover {
+  background-color: #660066 !important; }

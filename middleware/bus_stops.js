@@ -30,7 +30,7 @@ busStopMw.getNearbyStops = async function(limit, lati, long){
     //Sort array by distance to origin
     nearbyStops = sortCoordinates(meE, meN, nearbyStops);
     //Slice array to limi
-    nearbyStops = nearbyStops.slice(0, limit)
+    nearbyStops = nearbyStops.slice(0, limit);
     //return nearbyStops;
     return Promise.resolve(nearbyStops);
 }

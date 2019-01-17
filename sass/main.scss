@@ -49,8 +49,11 @@ body{
     @media only screen and (max-width: 768px) {
         font-size: 1.5em !important;
     }
-}
-#getLocation:hover{
-    color: white !important;
     cursor: pointer;
+}
+.stopEntity{
+    cursor: pointer;
+}
+.stopEntity:hover{
+    background-color: #660066 !important;
 }
