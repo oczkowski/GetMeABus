@@ -12,7 +12,6 @@
         return axios.get(url).then(function(response){
             var busData = response.data.sort(compare); //Save only bus 'data' and sort by timeToStation
             busData = busArrivalsParser(busData); //Parse bus arrivals data to Arrival model and nest later buses
-            console.log(busData);
             return busData;
         }).catch(function(error){
             console.log("Error: " + error);
@@ -36,7 +35,7 @@
             newArrivals.push(newArr);
         });
         //Nest later buses
-            //newArrivals = nestLaterBusArrivals(newArrivals);
+        newArrivals = nestLaterBusArrivals(newArrivals);
         //Return new array of objects
         return newArrivals;
     }
@@ -50,10 +49,25 @@
         this.NaptanId = NaptanId;
         //Arrival seconds to minutes
         this.minToStop = Math.round(timeToStop/60);
+        //Later buses array
+        this.laterBuses = [];
     }
 
     function nestLaterBusArrivals(arrivals){
-    
+        var arr = [];
+        for(var i = 0; i < arrivals.length; i++){
+            var doesExist = arr.findIndex(function(element){
+                return element.busId === arrivals[i].busId;
+            });
+
+            if(doesExist === -1){
+                arr.push(arrivals[i]);
+            } else { 
+                delete arrivals[i].laterBuses;
+                arr[doesExist].laterBuses.push(arrivals[i]);
+            };
+        };
+        return arr;
     };
 
 module.exports = busArrivalsMw;
