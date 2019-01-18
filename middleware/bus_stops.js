@@ -18,7 +18,7 @@ busStopMw.getNearbyStops = async function(limit, lati, long){
     nearbyStops = [],
     range = 500; //Show bus stops 1000 up down left and right
 
-    busStops.forEach(function(stop){
+    busStops.forEach(function(stop){//TO BE REFACTORED
         var stopE = Number(stop.Location_Easting),
             stopN = Number(stop.Location_Northing);
             
@@ -27,12 +27,17 @@ busStopMw.getNearbyStops = async function(limit, lati, long){
             nearbyStops.push(stop);
         }
     });
-    //Sort array by distance to origin
-    nearbyStops = sortCoordinates(meE, meN, nearbyStops);
-    //Slice array to limi
-    nearbyStops = nearbyStops.slice(0, limit);
-    //return nearbyStops;
-    return Promise.resolve(nearbyStops);
+    //Check if any buses found
+    if(nearbyStops.length > 0){
+        //Sort array by distance to origin
+        nearbyStops = sortCoordinates(meE, meN, nearbyStops);
+        //Slice array to limi
+        nearbyStops = nearbyStops.slice(0, limit);
+        //return nearbyStops;
+        return nearbyStops;
+    } else {
+        return false;
+    }
 }
 
 //Long - Lati => British National Grid
@@ -54,7 +59,7 @@ function sortCoordinates(meE, meN, coords){
         xName : 'Location_Easting',
         yName : 'Location_Northing'
     }
-    return sortByDistance(origin, coords, opts);
+    return sortByDistance(origin, coords, opts); //Sort by distance package
 }
 
 module.exports = busStopMw;

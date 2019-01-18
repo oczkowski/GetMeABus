@@ -56,13 +56,13 @@
     function nestLaterBusArrivals(arrivals){
         var arr = [];
         for(var i = 0; i < arrivals.length; i++){
-            var doesExist = arr.findIndex(function(element){
+            var doesExist = arr.findIndex(function(element){ //Find if exist and return index in of array
                 return element.busId === arrivals[i].busId;
             });
 
-            if(doesExist === -1){
+            if(doesExist === -1){ //Parent bus does not yet exist
                 arr.push(arrivals[i]);
-            } else { 
+            } else { //Parent bus found, nest into laterBuses array
                 delete arrivals[i].laterBuses;
                 arr[doesExist].laterBuses.push(arrivals[i]);
             };
