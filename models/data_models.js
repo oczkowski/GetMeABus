@@ -21,6 +21,10 @@ data_models.BusStop = function(stop){ //https://api.tfl.gov.uk/StopPoint/{id}
     this.distance = stop.distance;
     this.lat = stop.lat;
     this.lon = stop.lon;
+    //Getting the towards property
+    stop.additionalProperties.forEach((child) => {
+        if(child.category === "Direction" && child.key === "Towards") this.towards = child.value;
+    });
 }
 
 module.exports = data_models;
