@@ -13,17 +13,14 @@ data_models.Arrival = function(busId, destination, stopCode, timeToStop, towards
     this.laterBuses = [];
 }
 
-data_models.BusStop = function(stop, Naptan_Atco){ //https://api.tfl.gov.uk/StopPoint/{id}
-    this.Naptan_Atco = Naptan_Atco;
+data_models.BusStop = function(stop){ //https://api.tfl.gov.uk/StopPoint/{id}
+    this.naptanId = stop.naptanId;
     this.commonName = stop.commonName;
-    //Selecting the bus stop from children array
-    if(stop.stopType === "NaptanOnstreetBusCoachStopPair"){ //If stop is a bus stop
-        stop.children.forEach((child) => { //Loop through every child
-            if(child.naptanId === Naptan_Atco){ //If child is the bus stop we're looking for, bind data.
-                this.stopLetter = child.stopLetter
-            }
-        });
-    }
+    this.stopLetter = stop.stopLetter;
+    this.status = stop.status;
+    this.distance = stop.distance;
+    this.lat = stop.lat;
+    this.lon = stop.lon;
 }
 
 module.exports = data_models;

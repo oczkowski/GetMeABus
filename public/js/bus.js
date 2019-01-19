@@ -15,7 +15,7 @@ function getNearbyBusStops(lat, lon){
             if(data){ //Check if any bus stops were found
                 data.forEach(function(stop){
                     $("#stopsContainer").append(
-                        '<div class="ui vertical segment stopEntity" id="' + stop.Naptan_Atco + '">' + 
+                        '<div class="ui vertical segment stopEntity" id="' + stop.naptanId + '">' + 
                             '<p>' + stop.stopLetter + ' ' + stop.commonName + '</p>'+
                         '</div>'
                     );//End of append
