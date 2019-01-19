@@ -10,6 +10,13 @@ var express = require("express"),
     app.use(express.static(__dirname + "/semantic/dist"));
     //Public assets
     app.use(express.static(__dirname + "/public"));
+    //Global middleware
+    app.use(function(req, res, next){
+        res.locals.errorCallback = function(err){
+            console.log("ERROR: " + err); //TO BE REFACTORED
+        };
+        return next(); //It's a must
+    });
 //Routes
     var indexRoute = require("./routes/index"),
         busRoute = require("./routes/bus");

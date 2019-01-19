@@ -1,8 +1,8 @@
 //Listeners
 $(document).on("click", ".stopEntity", function(){  //Listens for future elements
-    var naptanId = this.id;
-    console.log("ARRIVALS FOR: " + naptanId);
-    getArrivals(naptanId).then(function(arr){ //Get bus arrivals for clicked bus stop
+    var Naptan_Atco = this.id;
+    console.log("ARRIVALS FOR: " + Naptan_Atco);
+    getArrivals(Naptan_Atco).then(function(arr){ //Get bus arrivals for clicked bus stop
         console.log(arr);
     });
 });
@@ -14,23 +14,26 @@ function getNearbyBusStops(lat, lon){
         $.getJSON(url , function(data){
             if(data){ //Check if any bus stops were found
                 data.forEach(function(stop){
-                    console.log(stop);
                     $("#stopsContainer").append(
                         '<div class="ui vertical segment stopEntity" id="' + stop.Naptan_Atco + '">' + 
-                            '<p>' + stop.Stop_Name + '</p>'+
+                            '<p>' + stop.stopLetter + ' ' + stop.commonName + '</p>'+
                         '</div>'
                     );//End of append
                 });//End of forEach
             } else {
-                console.log('no buses found'); //NO BUSES FOUND
+                $("#stopsContainer").append(
+                    '<div class="ui vertical segment"' + 
+                        '<p>No bus stops found nearby</p>' +
+                    '</div>'
+                );//End of append
             }
         });
 };
 
 //Get arrivals for a bus stop
-async function getArrivals(NaptanId){
+async function getArrivals(Naptan_Atco){
     var url = "/bus/arrivals";
-    var busArrivalsData = await $.post(url, { 'NaptanId' : NaptanId });
+    var busArrivalsData = await $.post(url, { 'Naptan_Atco' : Naptan_Atco });
     //Display data
     return busArrivalsData;
 }

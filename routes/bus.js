@@ -10,12 +10,12 @@
         res.render("bus");
     });
     router.get("/bus/stops/:lat/:lon", function(req, res){
-        busStopMw.getNearbyStops(6, req.params.lat, req.params.lon).then(function(nearbyStops){
+        busStopMw.getNearbyStops(req.params.lat, req.params.lon).then(function(nearbyStops){
             res.json(nearbyStops);
         });
     });
     router.post("/bus/arrivals", function(req, res){
-        busArrivalMw.getMeStopTimetable(req.body.NaptanId).then(function(arrivals){
+        busArrivalMw.getMeStopTimetable(req.body.Naptan_Atco).then(function(arrivals){
             res.json(arrivals);
         });
     });
