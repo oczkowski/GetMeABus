@@ -2,7 +2,8 @@
     var express = require("express"),
         router = express.Router(),
         busStopMw = require("../middleware/bus_stops"),
-        busArrivalMw = require("../middleware/bus_arrivals");
+        busArrivalMw = require("../middleware/bus_arrivals"),
+        busSearchMw = require("../middleware/bus_search");
 
 //Bus routes
     router.get("/bus", function(req, res){
@@ -10,13 +11,18 @@
         res.render("bus");
     });
     router.get("/bus/stops/:lat/:lon", function(req, res){
-        busStopMw.getNearbyStops(req.params.lat, req.params.lon).then(function(nearbyStops){
+        busStopMw.getNearbyStops(req.params.lat, req.params.lon).then((nearbyStops) => {
             res.json(nearbyStops);
         });
     });
     router.post("/bus/arrivals", function(req, res){
-        busArrivalMw.getMeStopTimetable(req.body.Naptan_Atco).then(function(arrivals){
+        busArrivalMw.getMeStopTimetable(req.body.naptanId).then((arrivals) =>{
             res.json(arrivals);
+        });
+    });
+    router.get("/bus/stop/:value", function(req, res){
+        busSearchMw.findStopsLocation(req.params.value).then((foundStops) => {
+            res.json(foundStops);
         });
     });
 //Return router

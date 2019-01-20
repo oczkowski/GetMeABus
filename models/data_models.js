@@ -27,4 +27,10 @@ data_models.BusStop = function(stop){ //https://api.tfl.gov.uk/StopPoint/{id}
     });
 }
 
+data_models.Search = function(searchRes){
+    this.name = searchRes.name;
+    this.lon = searchRes.lon;
+    this.lat = searchRes.lat;
+}
+
 module.exports = data_models;

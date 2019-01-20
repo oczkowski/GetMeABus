@@ -31,11 +31,21 @@ function getNearbyBusStops(lat, lon){
 };
 
 //Get arrivals for a bus stop
-async function getArrivals(Naptan_Atco){
+async function getArrivals(naptanId){
     var url = "/bus/arrivals";
-    var busArrivalsData = await $.post(url, { 'Naptan_Atco' : Naptan_Atco });
+    var busArrivalsData = await $.post(url, { 'naptanId' : naptanId });
     //Display data
     return busArrivalsData;
+}
+
+//Search for bus stop with input data passed from key listener in location.js
+async function getBusStops(val){
+    if(val){
+        var url = "/bus/stop/" + val;
+        $.getJSON(url, function(response){
+            console.log(response);
+        });
+    }
 }
 
 //Display data to user

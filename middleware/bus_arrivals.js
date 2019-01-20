@@ -17,7 +17,7 @@
                 app_id : tflId,
                 app_key : tflKey
             }
-        }).then(function(response){
+        }).then((response) => {
             var busData = response.data.sort(compare); //Save only bus 'data' and sort by timeToStation
             busData = busArrivalsParser(busData); //Parse bus arrivals data to Arrival model and nest later buses
             return busData;

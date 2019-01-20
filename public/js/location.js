@@ -20,6 +20,14 @@ $(document).ready(function(){
         navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
     });
 
-    //Get location using maps API
-
+    //Search input listener with a delay
+    var typingTimeout;
+    $('#searchInput').keyup(function() { //Start timout
+        clearTimeout(typingTimeout);
+        typingTimeout = setTimeout(() => getBusStops(this.value), 1500);
+    });
+    
+    $('#searchInput').keydown(function() {
+        clearTimeout(typingTimeout);
+    });
 });//End of document
