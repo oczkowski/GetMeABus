@@ -1,8 +1,8 @@
 //Listeners
 $(document).on("click", ".stopEntity", function(){  //Listens for future elements
-    var Naptan_Atco = this.id;
-    console.log("ARRIVALS FOR: " + Naptan_Atco);
-    getArrivals(Naptan_Atco).then(function(arr){ //Get bus arrivals for clicked bus stop
+    var NaptanId = this.id;
+    console.log("ARRIVALS FOR: " + NaptanId);//To be removed
+    getArrivals(NaptanId).then(function(arr){ //Get bus arrivals for clicked bus stop
         console.log(arr);
     });
 });
@@ -14,7 +14,6 @@ function getNearbyBusStops(lat, lon){
         $.getJSON(url , function(data){
             if(data){ //Check if any bus stops were found
                 data.forEach(function(stop){
-                    console.log(stop);
                     $("#stopsContainer").append(
                         '<div class="ui vertical segment stopEntity" id="' + stop.naptanId + '">' + 
                             '<p>' + stop.stopLetter + ' ' + stop.commonName + ' - ' + stop.towards + '</p>'+
@@ -22,7 +21,7 @@ function getNearbyBusStops(lat, lon){
                     );//End of append
                 });//End of forEach
             } else {
-                $("#stopsContainer").append(
+                $("#stopsContainer").innerHTML(
                     '<div class="ui vertical segment"' + 
                         '<p>No bus stops found nearby</p>' +
                     '</div>'

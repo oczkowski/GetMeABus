@@ -6,12 +6,18 @@
     //Data models
     dm = require("../models/data_models");
     //Config
-    const tflApiString = '?app_id=' + process.env.TFL_APP_ID + '&app_key=' + process.env.TFL_APP_KEY;
+    const tflId = process.env.TFL_APP_ID;
+    const tflKey = process.env.TFL_APP_KEY;
 
     //TFL API
-    busArrivalsMw.getMeStopTimetable = function(Naptan_Atco){
-        var url = 'https://api.tfl.gov.uk/StopPoint/' + Naptan_Atco + '/Arrivals' + tflApiString;
-        return axios.get(url).then(function(response){
+    busArrivalsMw.getMeStopTimetable = function(NaptanId){
+        var url = 'https://api.tfl.gov.uk/StopPoint/' + NaptanId + '/Arrivals';
+        return axios.get(url, {
+            params: {
+                app_id : tflId,
+                app_key : tflKey
+            }
+        }).then(function(response){
             var busData = response.data.sort(compare); //Save only bus 'data' and sort by timeToStation
             busData = busArrivalsParser(busData); //Parse bus arrivals data to Arrival model and nest later buses
             return busData;

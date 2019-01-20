@@ -1,12 +1,12 @@
 var data_models = {};
 
-data_models.Arrival = function(busId, destination, stopCode, timeToStop, towards, Naptan_Atco){
+data_models.Arrival = function(busId, destination, stopCode, timeToStop, towards, naptanId){
     this.busId = busId;
     this.destination = destination;
     this.stopCode = stopCode;
     this.timeToStop = timeToStop;
     this.towards = towards;
-    this.Naptan_Atco = Naptan_Atco;
+    this.naptanId = naptanId;
     //Arrival seconds to minutes
     this.minToStop = Math.round(timeToStop/60);
     //Later buses array
