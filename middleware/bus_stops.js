@@ -14,6 +14,8 @@
         range = Number(process.env.BUS_STOP_RANGE), //Show bus stops 1000 up down left and right
         limit = Number(process.env.BUS_STOP_LIMIT); //Bus stops limit from config
 
+        console.log("LATI: " + lati);
+
         var tflStopsResponse = await getStopsFromTfl(range, lati, long);
         tflStopsResponse = tflStopsResponse.data;
 

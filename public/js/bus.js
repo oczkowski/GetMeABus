@@ -13,6 +13,7 @@ function getNearbyBusStops(lat, lon){
         var url = "/bus/stops/" + lat + "/" + lon;
         $.getJSON(url , function(data){
             if(data){ //Check if any bus stops were found
+                $("#stopsContainer").html("");
                 data.forEach(function(stop){
                     $("#stopsContainer").append(
                         '<div class="ui vertical segment stopEntity" id="' + stop.naptanId + '">' + 
@@ -43,7 +44,16 @@ async function getBusStops(val){
     if(val){
         var url = "/bus/stop/" + val;
         $.getJSON(url, function(response){
-            console.log(response);
+            if(response){
+                $("#stopsContainer").html("");
+                response.forEach((stop) => {
+                    $("#stopsContainer").append(
+                        '<div class="ui vertical segment" onclick="getNearbyBusStops(' + stop.lat + ', ' + stop.lon + ')">' + 
+                            '<p>' + stop.name + ' - ' + stop.lat + ', ' + stop.lon + '</p>'+
+                        '</div>'
+                    );//End of append
+                });
+            }
         });
     }
 }
