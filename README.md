@@ -8,6 +8,6 @@ Imagine being really late for work. You're running through people just to get on
 
 ##### Note:
 
-Config file name should be .env~~.example~~
+Config file name should be .env ~~.example~~
 
 Live version: [Get Me A Bus !](https://gmab.oczkow.ski)
