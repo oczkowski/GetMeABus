@@ -24,7 +24,7 @@ $(document).ready(function () {
     var typingTimeout;
     $('#searchInput').keyup(function () { //Start timout
         clearTimeout(typingTimeout);
-        typingTimeout = setTimeout(() => getBusStops(this.value), 500);
+        typingTimeout = setTimeout(() => { getBusStops(this.value); if (this.value) toggleLoader(true); }, 500);
     });
 
     $('#searchInput').keydown(function () {

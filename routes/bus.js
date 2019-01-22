@@ -7,7 +7,6 @@ var express = require("express"),
 
 //Bus routes
 router.get("/", function (req, res) {
-    //getMeStopTimetable('490014872N');//TESTING 1 2 1 2
     res.render("bus");
 });
 router.get("/stops/:lat/:lon", function (req, res) {

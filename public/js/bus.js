@@ -9,9 +9,13 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
 
 //Get a list of bus stops nearby
 function getNearbyBusStops(lat, lon) {
+    //Toggle on loading animation
+    toggleLoader(true);
     //Request bus stop data
     var url = "/bus/stops/" + lat + "/" + lon;
     $.getJSON(url, function (data) {
+        //Toggle off loading animation
+        toggleLoader(false);
         if (data) { //Check if any bus stops were found
             $("#stopsContainer").html("");
             data.forEach(function (stop) {
@@ -44,6 +48,8 @@ async function getBusStops(val) {
     if (val) {
         var url = "/bus/stop/" + val;
         $.getJSON(url, function (response) {
+            //Toggle off loading
+            toggleLoader(false);
             if (response) {
                 $("#stopsContainer").html("");
                 response.forEach((stop) => {
