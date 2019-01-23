@@ -38,7 +38,7 @@ function getNearbyBusStops(lat, lon) {
                 if(data.towards != undefined){
                     goingTowards = '<div class="five wide column towardsText">Towards <strong>' + stop.towards + '</strong></br> ' + stop.lines + '</div>'
                 } else{
-                    goingTowards = '<div class="five wide column towardsText">Towards <strong> Bus is not going anywhere </strong></br> stop.lines + </div>'
+                    goingTowards = '<div class="five wide column towardsText">Towards <strong> Bus is not going anywhere </strong></div>'
                 }
                 $("#stopsContainer").append(
                     '<div class="ui grid middle aligned stopEntity" id="' + stop.naptanId + '">' +
