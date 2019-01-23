@@ -3,7 +3,16 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
     var NaptanId = this.id;
     console.log("ARRIVALS FOR: " + NaptanId);//To be removed
     getArrivals(NaptanId).then(function (arr) { //Get bus arrivals for clicked bus stop
-        console.log(arr);
+        //console.log(arr) Testing
+        $("#stopsContainer").html("");
+        arr.forEach((arrival) => {
+            $("#stopsContainer").append(
+                '<tr>' +
+                '<td><div class="arrivalTime">' + arrival.busId + '</div><strong>' + arrival.minToStop + '</strong> To ' + arrival.destination + '</td>' +
+                '<td>Towards ' + arrival.towards + '</br><small><u>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</u></small></td>' +
+                '</tr>'
+            );//End of append
+        });
     });
 });
 
@@ -20,9 +29,10 @@ function getNearbyBusStops(lat, lon) {
             $("#stopsContainer").html("");
             data.forEach(function (stop) {
                 $("#stopsContainer").append(
-                    '<div class="ui vertical segment stopEntity" id="' + stop.naptanId + '">' +
-                    '<p>' + stop.stopLetter + ' ' + stop.commonName + ' - ' + stop.towards + '</p>' +
-                    '</div>'
+                    '<tr id="' + stop.naptanId + '" class="stopEntity">' +
+                    '<td><div class="stopLetter">' + stop.stopLetter + '</div>' + stop.commonName + '</td>' +
+                    '<td>Towards ' + stop.towards + '</br> ' + stop.lines + '</td>' +
+                    '</tr>'
                 );//End of append
             });//End of forEach
         } else {
@@ -54,9 +64,11 @@ async function getBusStops(val) {
                 $("#stopsContainer").html("");
                 response.forEach((stop) => {
                     $("#stopsContainer").append(
-                        '<div class="ui vertical segment" onclick="getNearbyBusStops(' + stop.lat + ', ' + stop.lon + ')">' +
-                        '<p>' + stop.name + ' - ' + stop.lat + ', ' + stop.lon + '</p>' +
-                        '</div>'
+                        '<tr onclick="getNearbyBusStops(' + stop.lat + ', ' + stop.lon + ')">' +
+                        '<td><div class="stopLetter">+</div></td>' +
+                        '<td>' + stop.name + '</td>' +
+                        '<td>' + stop.lat + ', ' + stop.lon + '</td>' +
+                        '</tr>'
                     );//End of append
                 });
             }

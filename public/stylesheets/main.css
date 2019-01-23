@@ -48,11 +48,43 @@ body {
     #getLocation {
       font-size: 1.5em !important; } }
 
-.stopEntity {
+.searchEntity {
   cursor: pointer; }
 
-.stopEntity:hover {
+.searchEntity:hover {
   background-color: #660066 !important; }
 
 #locationLoader {
   display: none; }
+
+.stopLetter, .arrivalTime {
+  color: white;
+  background: #dc241f;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+  line-height: 35px;
+  user-select: none;
+  margin-right: 1em; }
+
+.arrivalTime {
+  width: 60px;
+  font-size: 25px;
+  color: #dc241f;
+  background: white;
+  border: 2px solid #dc241f; }
+
+#stopsContainer {
+  max-width: 600px;
+  margin: 20px auto; }
+
+#stopsContainer tr {
+  cursor: pointer; }
+
+#stopsContainer tr:hover {
+  background-color: #660066; }

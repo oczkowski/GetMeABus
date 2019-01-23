@@ -16,7 +16,8 @@ data_models.Arrival = function (busId, destination, stopCode, timeToStop, toward
 data_models.BusStop = function (stop) { //https://api.tfl.gov.uk/StopPoint/{id}
     this.naptanId = stop.naptanId;
     this.commonName = stop.commonName;
-    this.stopLetter = stop.stopLetter;
+    stop.stopLetter == undefined ? this.stopLetter = " " : this.stopLetter = stop.stopLetter; //If letter empty do not return undefined
+    this.stopLetter = this.stopLetter.replace(/\W/g, ''); //Remove special characters
     this.status = stop.status;
     this.distance = stop.distance;
     this.lat = stop.lat;
@@ -25,6 +26,12 @@ data_models.BusStop = function (stop) { //https://api.tfl.gov.uk/StopPoint/{id}
     stop.additionalProperties.forEach((child) => {
         if (child.category === "Direction" && child.key === "Towards") this.towards = child.value;
     });
+    //Getting lines for stop in string format
+    let arr = [];
+    stop.lines.forEach((line) => {
+        arr.push(line.id);
+    });
+    this.lines = arr.join(", ");//example 346, 735, 342
 }
 
 data_models.Search = function (searchRes) {
