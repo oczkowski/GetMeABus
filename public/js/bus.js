@@ -9,11 +9,11 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
             var nextBusStr = "";
             arrival.laterBuses.length > 0 ? nextBusStr = '<small>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</small>' : nextBusStr = "";
             var minToStop = "";
-            arrival.minToStop == 0 ? minToStop = "Due" : minToStop = arrival.minToStop;
+            arrival.minToStop == 0 ? minToStop = "<strong>Due</strong>" : minToStop = "<strong>" + arrival.minToStop + "</strong> <strong>min</strong>";
             $("#stopsContainer").append(
                 '<tr>' +
                 '<td><div class="arrivalId">' + arrival.busId + '</div><div class="arrivalDest">' + arrival.destination + '</div></td>' +
-                '<td class="arrivalTime"><strong>' + minToStop + '</strong> <strong>min</strong></br>' + nextBusStr + '</td>' +
+                '<td class="arrivalTime">' + minToStop + '</br>' + nextBusStr + '</td>' +
                 '</tr>'
             );//End of append
         });
