@@ -2,13 +2,12 @@
 $(document).on("click", ".stopEntity", function () {  //Listens for future elements
     toggleLoader(true); //Start loading animation
     var NaptanId = this.id;
-    console.log("ARRIVALS FOR: " + NaptanId);//To be removed
     getArrivals(NaptanId).then(function (arr) { //Get bus arrivals for clicked bus stop
         //console.log(arr) Testing
         $("#stopsContainer").html("");
         arr.forEach((arrival) => {
             var nextBusStr = "";
-            arrival.laterBuses[0].minToStop ? nextBusStr = '<small>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</small>' : nextBusStr = "";
+            arrival.laterBuses.length > 0 ? nextBusStr = '<small>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</small>' : nextBusStr = "";
             $("#stopsContainer").append(
                 '<tr>' +
                 '<td><div class="arrivalId">' + arrival.busId + '</div><div class="arrivalDest">' + arrival.destination + '</div></td>' +
