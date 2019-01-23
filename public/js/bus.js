@@ -11,10 +11,11 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
             var minToStop = "";
             arrival.minToStop == 0 ? minToStop = "<strong>Due</strong>" : minToStop = "<strong>" + arrival.minToStop + "</strong> <strong>min</strong>";
             $("#stopsContainer").append(
-                '<tr>' +
-                '<td><div class="arrivalId">' + arrival.busId + '</div><div class="arrivalDest">' + arrival.destination + '</div></td>' +
-                '<td class="arrivalTime">' + minToStop + '</br>' + nextBusStr + '</td>' +
-                '</tr>'
+                '<div class="ui grid middle aligned arrivalEntity">' +
+                '   <div class="four wide column"><div class="arrivalId">' + arrival.busId + '</div></div>' +
+                '   <div class="seven wide column entityText">' + arrival.destination + '</div>' +
+                '   <div class="five wide column arrivalTime">' + minToStop + '</br>' + nextBusStr + '</div>' +
+                '</div>'
             );//End of append
         });
     });
@@ -34,10 +35,10 @@ function getNearbyBusStops(lat, lon) {
             $("#stopsContainer").html("");
             data.forEach(function (stop) {
                 $("#stopsContainer").append(
-                    '<tr id="' + stop.naptanId + '" class="stopEntity">' +
-                    '<td><div class="stopLetter">' + stop.stopLetter + '</div>' + stop.commonName + '</td>' +
-                    '<td>Towards ' + stop.towards + '</br> ' + stop.lines + '</td>' +
-                    '</tr>'
+                    '<div class="ui grid middle aligned stopEntity" id="' + stop.naptanId + '">' +
+                    '   <div class="four wide column"><div class="stopLetter">' + stop.stopLetter + '</div></div>' +
+                    '   <div class="seven wide column entityText"><strong>' + stop.commonName + '</strong></div>' +
+                    '   <div class="five wide column towardsText">Towards <strong>' + stop.towards + '</strong></br> ' + stop.lines + '</div>'
                 );//End of append
             });//End of forEach
         } else {
@@ -69,11 +70,10 @@ async function getBusStops(val) {
                 $("#stopsContainer").html("");
                 response.forEach((stop) => {
                     $("#stopsContainer").append(
-                        '<tr onclick="getNearbyBusStops(' + stop.lat + ', ' + stop.lon + ')">' +
-                        '<td><div class="stopLetter">+</div></td>' +
-                        '<td>' + stop.name + '</td>' +
-                        '<td>' + stop.lat + ', ' + stop.lon + '</td>' +
-                        '</tr>'
+                        '<div class="ui grid middle aligned searchEntity" onclick="getNearbyBusStops(' + stop.lat + ', ' + stop.lon + ')">' +
+                        '   <div class="four wide column"><div class="stopLetter">+</div></div>' +
+                        '   <div class="ten wide column entityText"><strong>' + stop.name + '</strong></div>' +
+                        '</div>'
                     );//End of append
                 });
             }

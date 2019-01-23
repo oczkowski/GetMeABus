@@ -51,12 +51,6 @@ body{
     }
     cursor: pointer;
 }
-.searchEntity{
-    cursor: pointer;
-}
-.searchEntity:hover{
-    background-color: #660066 !important;
-}
 #locationLoader{
     display: none;
 }
@@ -81,23 +75,35 @@ body{
     background: white;
     border: 2px solid rgb(220, 36, 31);
 }
-.arrivalDest{
-    display: inline-block;
-    font-size: 16px;
-}
 .arrivalTime{
     text-align: right !important;
 }
 .arrivalTime strong:first-of-type{
     font-size: 24px;
 }
+.towardsText{
+    text-align: left;
+}
+.arrivalEntity, .stopEntity, .searchEntity{
+    background: #a333c8;
+    border-bottom: 2px solid purple;
+    cursor: pointer;
+    margin: auto 20px !important;
+}
+.arrivalEntity:hover, .stopEntity:hover, .searchEntity:hover{
+    background-color: #660066;
+}
+.entityText{
+    font-size: 16px;
+}
 #stopsContainer{
-    max-width: 600px;
+    max-width: 550px;
+    width: 100%;
     margin: 20px auto;
 }
-#stopsContainer tr{
-    cursor: pointer;
+#stopsContainer > div:first-child{
+    border-top-left-radius: 10px; border-top-right-radius: 10px;
 }
-#stopsContainer tr:hover{
-    background-color: #660066;
+#stopsContainer > div:last-child{
+    border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
 }
