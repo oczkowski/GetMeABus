@@ -24,6 +24,13 @@ body{
     @media only screen and (max-width: 768px) {
         font-size: 7em;
     }
+    display: flex;
+    @media only screen and (max-width: 480px) {
+        flex-direction: column;
+    }
+}
+.pick{
+    display: inline-flex;
 }
 .pick:hover{
     background: #660066;
