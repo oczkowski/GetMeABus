@@ -1,5 +1,6 @@
 //Listeners
 $(document).on("click", ".stopEntity", function () {  //Listens for future elements
+    toggleLoader(true); //Start loading animation
     var NaptanId = this.id;
     console.log("ARRIVALS FOR: " + NaptanId);//To be removed
     getArrivals(NaptanId).then(function (arr) { //Get bus arrivals for clicked bus stop
@@ -13,6 +14,7 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
                 '</tr>'
             );//End of append
         });
+        toggleLoader(false); //Stop loading animation
     });
 });
 
