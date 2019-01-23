@@ -7,10 +7,12 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
         //console.log(arr) Testing
         $("#stopsContainer").html("");
         arr.forEach((arrival) => {
+            var nextBusStr = "";
+            arrival.laterBuses[0].minToStop ? nextBusStr = '<small>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</small>' : nextBusStr = "";
             $("#stopsContainer").append(
                 '<tr>' +
-                '<td><div class="arrivalTime">' + arrival.busId + '</div><strong>' + arrival.minToStop + '</strong> To ' + arrival.destination + '</td>' +
-                '<td>Towards ' + arrival.towards + '</br><small><u>Next in ' + arrival.laterBuses[0].minToStop + ' minutes</u></small></td>' +
+                '<td><div class="arrivalId">' + arrival.busId + '</div><div class="arrivalDest">' + arrival.destination + '</div></td>' +
+                '<td class="arrivalTime"><strong>' + arrival.minToStop + '</strong> <strong>min</strong></br>' + nextBusStr + '</td>' +
                 '</tr>'
             );//End of append
         });

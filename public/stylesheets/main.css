@@ -57,7 +57,7 @@ body {
 #locationLoader {
   display: none; }
 
-.stopLetter, .arrivalTime {
+.stopLetter, .arrivalId {
   color: white;
   background: #dc241f;
   border: 2px solid white;
@@ -72,12 +72,22 @@ body {
   user-select: none;
   margin-right: 1em; }
 
-.arrivalTime {
+.arrivalId {
   width: 60px;
   font-size: 25px;
   color: #dc241f;
   background: white;
   border: 2px solid #dc241f; }
+
+.arrivalDest {
+  display: inline-block;
+  font-size: 16px; }
+
+.arrivalTime {
+  text-align: right !important; }
+
+.arrivalTime strong:first-of-type {
+  font-size: 24px; }
 
 #stopsContainer {
   max-width: 600px;
