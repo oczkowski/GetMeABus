@@ -14,8 +14,8 @@ $(document).on("click", ".stopEntity", function () {  //Listens for future eleme
                 '</tr>'
             );//End of append
         });
-        toggleLoader(false); //Stop loading animation
     });
+    toggleLoader(false); //Stop loading animation
 });
 
 //Get a list of bus stops nearby
