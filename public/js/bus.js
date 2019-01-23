@@ -34,11 +34,17 @@ function getNearbyBusStops(lat, lon) {
         if (data) { //Check if any bus stops were found
             $("#stopsContainer").html("");
             data.forEach(function (stop) {
+                var goingTowards;
+                if(data.towards != undefined){
+                    goingTowards = '<div class="five wide column towardsText">Towards <strong>' + stop.towards + '</strong></br> ' + stop.lines + '</div>'
+                } else{
+                    goingTowards = '<div class="five wide column towardsText">Towards <strong> Bus is not going anywhere </strong></br> stop.lines + </div>'
+                }
                 $("#stopsContainer").append(
                     '<div class="ui grid middle aligned stopEntity" id="' + stop.naptanId + '">' +
                     '   <div class="four wide column"><div class="stopLetter">' + stop.stopLetter + '</div></div>' +
                     '   <div class="seven wide column entityText"><strong>' + stop.commonName + '</strong></div>' +
-                    '   <div class="five wide column towardsText">Towards <strong>' + stop.towards + '</strong></br> ' + stop.lines + '</div>'
+                    goingTowards
                 );//End of append
             });//End of forEach
         } else {
