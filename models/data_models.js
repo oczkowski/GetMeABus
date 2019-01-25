@@ -8,9 +8,12 @@ data_models.Arrival = function (busId, destination, stopCode, timeToStop, toward
     this.towards = towards;
     this.naptanId = naptanId;
     //Arrival seconds to minutes
-    this.minToStop = Math.round(timeToStop / 60);
+    this.minToStop = this.getMinToStop(timeToStop);
     //Later buses array
     this.laterBuses = [];
+}
+data_models.Arrival.prototype.getMinToStop = timeToStop => {
+    return Math.round(timeToStop / 60);
 }
 
 data_models.BusStop = function (stop) { //https://api.tfl.gov.uk/StopPoint/{id}
@@ -22,16 +25,25 @@ data_models.BusStop = function (stop) { //https://api.tfl.gov.uk/StopPoint/{id}
     this.distance = stop.distance;
     this.lat = stop.lat;
     this.lon = stop.lon;
-    //Getting the towards property
-    stop.additionalProperties.forEach((child) => {
-        child.category === "Direction" && child.key === "Towards" ? this.towards = child.value : this.towards = false;
+    //Setting the towards property
+    this.towards = this.getTowardsProperty(stop);
+    //Setting lines for stop in string format
+    this.lines = this.getLinesForStop(stop);
+}
+data_models.BusStop.prototype.getTowardsProperty = stop => { //Getting the towards property
+    let towards;
+    stop.additionalProperties.forEach(child => {
+        child.category === "Direction" && child.key === "Towards" ? towards = child.value : towards = false;
     });
-    //Getting lines for stop in string format
+    return towards;
+}
+
+data_models.BusStop.prototype.getLinesForStop = stop => {//Getting lines for stop in string format
     let arr = [];
     stop.lines.forEach((line) => {
         arr.push(line.id);
     });
-    this.lines = arr.join(", ");//example 346, 735, 342
+    return arr.join(", ");//example 346, 735, 342
 }
 
 data_models.Search = function (searchRes) {
