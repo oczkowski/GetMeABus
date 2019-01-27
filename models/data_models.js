@@ -28,7 +28,7 @@ data_models.BusStop = function (stop) { //https://api.tfl.gov.uk/StopPoint/{id}
     //Setting the towards property
     this.towards = this.getTowardsProperty(stop);
     //Setting lines for stop in string format
-    this.lines = this.getLinesForStop(stop);
+    this.getLinesForStop(stop);
 }
 data_models.BusStop.prototype.getTowardsProperty = stop => { //Getting the towards property
     let towards;
@@ -43,7 +43,7 @@ data_models.BusStop.prototype.getLinesForStop = stop => {//Getting lines for sto
     stop.lines.forEach((line) => {
         arr.push(line.id);
     });
-    return arr.join(", ");//example 346, 735, 342
+    this.lines = arr.join(", ");//example 346, 735, 342
 }
 
 data_models.Search = function (searchRes) {
