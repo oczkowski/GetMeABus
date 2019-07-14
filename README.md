@@ -10,4 +10,4 @@ Imagine being really late for work. You're running through people just to get on
 
 Config file name should be .env ~~.example~~
 
-Live version: [Get Me A Bus !](https://gmab.oczkow.ski)
+Live version: [Get Me A Bus !](https://projects.oczkow.ski/getmeabus/)
